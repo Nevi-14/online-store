@@ -15,7 +15,7 @@
 
         <label for="staff">Asociado</label>
 
-        <select id="product_owner" class="form-control form-control-sm search_box_pop_up" data-toggle="modal" data-target="#segundomodal" name="product_owner" inputmode="search" required>
+        <select id="product_owner" class="form-control form-control-sm " data-toggle="modal" data-target="#" name="product_owner" inputmode="search" required>
 
             @foreach ($users as $user)
             <option value="{{@$user->id}}">{{@$user->name}}</option>
@@ -32,7 +32,7 @@
 
         <label for="offer">Categoria</label>
 
-        <select class="form-control form-control-sm search_box_pop_up" name="category_id" required data-toggle="modal" data-target="#segundomodal">
+        <select class="form-control form-control-sm " name="category_id" required data-toggle="modal" data-target="#">
             @foreach ($categories as $category)
             <option value="{{@$category->id}}">{{@$category->name}}</option>
             @endforeach
@@ -49,7 +49,7 @@
     <div class="col-6 mb-3">
 
         <label for="offer">Subcategoria</label>
-        <select id="subcategories" class="form-control form-control-sm search_box_pop_up" name="subcategory_id" inputmode="none" data-toggle="modal" data-target="#segundomodal" required>on>
+        <select id="subcategories" class="form-control form-control-sm " name="subcategory_id" inputmode="none" data-toggle="modal" data-target="#" required>on>
             @foreach ($subcategories as $subcategory)
             <option value="{{@$subcategory->id}}">{{@$subcategory->name}}</option>
             @endforeach
@@ -64,7 +64,7 @@
     <div class="col-6 mb-3">
 
         <label for="staff">Estado</label>
-        <select id="status" class="form-control form-control-sm search_box_pop_up" inputmode="none" name="status_id" data-toggle="modal" data-target="#segundomodal">
+        <select id="status" class="form-control form-control-sm " inputmode="none" name="status_id" data-toggle="modal" data-target="#">
 
             @foreach ($statuses as $status)
             <option value=" {{@$status->id}}">{{@$status->name}}</option>
@@ -79,7 +79,7 @@
     <div class="col-6 mb-3">
         <label for="size">Tamaño</label>
 
-        <select id="size" class="form-control form-control-sm search_box_pop_up" inputmode="none" name="size_id" required data-toggle="modal" data-target="#segundomodal">
+        <select id="size" class="form-control form-control-sm " inputmode="none" name="size_id" required data-toggle="modal" data-target="#">
             >
             @foreach($sizes as $size)
             <option value=" {{$size->id}}"> {{$size->name}}</option>

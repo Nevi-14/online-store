@@ -520,7 +520,7 @@
                           @if(count($product->product_details) > 0 )
 
                           @if(count($product->product_details->first()->images) > 0)
-                          <img class=" avatar" src="/show_images/?file={{$product->product_details->first()->images->first()->image}}" alt="Card image cap">
+                          <img class=" avatar"  src="/show_images/?file=img_not_available.png"  alt="Card image cap">
                           @else
                           <img src="/show_images/?file=img_not_available.png" class="avatar" alt="Card image cap">
                           @endif
