@@ -175,8 +175,21 @@ Route::get('download_local',[FileUploadController::class, 'download_local']);
 Route::get('show_images',[ProductImageController::class, 'showImage']);
 Route::get('show_company_images',[GeneralSettingsController::class, 'showCompanyImage']);
 
+Route::get('/storage/{folder}/{subfolder}/{filename}', function ($folder, $subfolder, $filename)
+{
+    $path = storage_path( $folder.'/'. $subfolder.'/'. $filename);
 
+    if (!File::exists($path)) {
+        abort(404);
+    }
 
+    $file = File::get($path);
+    $type = File::mimeType($path);
 
+    $response = Response::make($file, 200);
+    $response->header("Content-Type", $type);
+
+    return $response;
+});
 
 

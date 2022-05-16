@@ -125,6 +125,6 @@ class ProductImageController extends Controller
                 ]
             );
         }
-        return "no file";
+        return  response()->file(Storage::get('my_image.jpg'), ['Content-Type' => 'image/jpeg']);
     }
 }

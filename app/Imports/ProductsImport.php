@@ -10,6 +10,7 @@ use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\SkipsOnError;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithValidation;
+use App\Models\productDetail;
 
 class ProductsImport implements 
     ToCollection, 
@@ -25,21 +26,27 @@ class ProductsImport implements
         foreach ($rows as $row) 
         {
             ++$this->rows;
-            Product::create([
+           $product = Product::create([
                 'name' => $row['name'],
-                'short_description' => $row['short_description'],
-                'long_description'=> $row['long_description'],
-                'price' => $row['price'],
-                'sku' => $row['sku'],
-                'discount' => $row['discount'],
-                'units' => $row['units'],
+                'product_owner' => $row['product_owner'],
+                'category_id'=> $row['category_id'],
+                'subcategory_id' => $row['subcategory_id'],
+                'long_description' => $row['long_description'],
                 'tax_type_1' => $row['tax_type_1'],
-                'tax_type_2' => $row['tax_type_2'],
-                'tax_type_3' => $row['tax_type_3'],
-                'product_group_id' => $row['product_group_id'],
-                'status' => $row['status'],
                 'created_by_id' => $row['created_by_id'],
             ]);
+            productDetail::create([
+                'product_id' =>$product->id,
+                'discount_id' =>$row['discount_id'],
+                'size_id' => $row['size_id'],
+                'status_id' =>$row['status_id'],
+                'purchased_price' => $row['purchased_price'],
+                'suggested_price' => $row['suggested_price'],
+                'selling_price' => $row['selling_price'],
+                'stock' => $row['stock'],
+                'available' => $row['available']
+            ]);
+           
         }
     }
 

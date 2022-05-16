@@ -7,90 +7,10 @@
 
 <style>
 
-.wrapper1 {
-  margin: 0 auto;
-  background: #ffffff;
-  border-radius: 5px;
-  box-shadow: 0px 1px 5px 3px rgba(0,0,0,0.15);
-  position: relative;
-  width: 450px;
-}
 
 
-.results {
-  padding: 0px;
-}
-
-.results ul {margin: 0; padding: 0; }
-.results ul li {
-  list-style: none;
-  border-radius: 3px;
-  opacity: 0;
-  display: none;
-  padding: 8px 12px;
-  transition: all .5s linear;
-}
-
-.show .results ul li {
-  opacity: 1;
-  display: block;
-}
-
-.show .results {
-  padding: 10px;
-}
-
-.results ul li:hover {
-  background: #ececec
-}
 
 
-  tbody {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  tbody tr {
-
-    float: left;
-    width: 18rem;
-
-    border: none;
-    border-radius: .25rem;
-    box-shadow: none;
-
-  }
-
-  tbody td {
-    display: block;
-
-  }
-
-  thead {
-    display: none;
-  }
-
-  td:before {
-    content: attr(data-label);
-    position: relative;
-    float: left;
-    color: #808080;
-    min-width: 4rem;
-    margin-left: 0;
-    margin-right: 1rem;
-    text-align: left;
-  }
-
-  tr.selected td:before {
-    color: #CCC;
-  }
-
-  .avatar {
-    height: 140px;
-    width: 100%;
-
-  }
 
   #productsTable_length {
     display: flex;
@@ -488,81 +408,96 @@
               </div>
 
               <div class="table-responsive">
-                <table id="productsTable" class="table table-borderless">
-                  <thead>
+              <table id="productsTable" class="table table-bordered table-striped">
+                    <thead>
                     <tr>
-                      <th>{{__('Image')}}</th>
-
+                    <th>{{__('Image')}}</th>
+        
+                      <th>{{__('Owner')}}</th>
+                      <th>{{__('Name')}}</th>
+                      <th>{{__('Price')}} ({{__('in')}} {{@$base_currency->name}})</th>
+                      <th>{{__('Discount')}} ({{__('in')}} {{@$base_currency->name}})</th>
+                      <th>{{__('Units')}}</th>
+                      <th>{{__('Category')}}</th>
+                      <th>{{__('Subcategory')}}</th>
+                      <th width="20%">{{__('Actions')}}</th>
                     </tr>
-                  </thead>
+                    </thead>
                   <tbody>
-                    @foreach (@$products as $product)
-                    <tr>
-                      <td>
-                        <div class="card collapsed-card">
-                          <div class="card-header">
-                            <h6 class="d-inline">{{@$product->name}}</h6>
+                        @foreach (@$products as $product)
+                            <tr>
+                            <td>
+                            @if(count($product->product_details) > 0 )
 
+@if(count($product->product_details->first()->images) > 0)
 
-                            <div class="card-tools">
-                              <button type="button" class="btn text-dark btn-tool" data-card-widget="collapse">
-                                <i class="fas fa-plus"></i>
-                              </button>
-                              <button type="button" class="btn btn-tool text-dark" data-card-widget="remove">
-                                <i class="fas fa-times"></i>
-                              </button>
+<img height="100" class=" avatar"  src="{{asset('storage/images/products/' . $product->product_details->first()->images->first()->image)}}"  alt="Card image cap">                    
 
+@else
+<img height="100"  src="/show_images/?file=img_not_available.png" class="avatar" alt="Card image cap">
+@endif
 
-                            </div>
-                          </div>
+@else
+<img height="100" src="/show_images/?file=img_not_available.png" class="avatar" alt="Card image cap">
+@endif
 
+                        
+                            
+                           </td>
+                              <td>{{@$product->owner->name}}</td>
+                              <td>{{@$product->name}}</td>
+                              <td>{{@$product->product_details->first()->selling_price}}</td>
+                              @if($product->product_details->first()->discount)
+                              <td>{{$product->product_details->first()->discount->percentage}}</td>
+                              @else
+                                <td>N/A</td>
+                              
+                              @endif
 
-                          @if(count($product->product_details) > 0 )
+                              @if(@$product->product_details->first()->stock <= 5)
 
-                          @if(count($product->product_details->first()->images) > 0)
-                          <img class=" avatar"  src="/show_images/?file=img_not_available.png"  alt="Card image cap">
-                          @else
-                          <img src="/show_images/?file=img_not_available.png" class="avatar" alt="Card image cap">
-                          @endif
+                              <td> <span class="badge badge-pill badge-danger">Units in stock <span class="badge badge-warning">{{@$product->product_details->first()->stock}}</span></span></td>
+                             @else
+                             <td> <span class="badge badge-pill badge-success">Units in stock <span class="badge badge-dark">{{@$product->product_details->first()->stock}}</span></span></td>
+                              @endif
+                    
+                              <td>{{@$product->category->name}}</td>
+                              <td>{{@$product->subcategory->name}}</td>
+                                <td>
+                                  <a href="#" data-toggle="tooltip" data-title="{{$product->created_at->toDayDateTimeString()}}" class="mr-3">
+                                    <i class="fas fa-clock text-info"></i>
+                                  </a>
+                                  <a href="#" data-toggle="tooltip" data-title="{{$product->updated_at->toDayDateTimeString()}}" class="mr-3">
+                                    <i class="fas fa-history text-primary"></i>
+                                  </a>
+                                  <span>
+                                    @can('update-product', User::class)
+                                      <a class="text-primary mr-3" href="{{url('/product/edit', $product)}}">
+                                        <i class="fas fa-edit"></i>
+                                      </a>
+                                    @endcan
+  
+                                    @can('delete-product', User::class)
 
-                          @else
-                          <img src="/show_images/?file=img_not_available.png" class="avatar" alt="Card image cap">
-                          @endif
+                                    <span id="delbtn{{@$product->id}}"></span>
+                                  
+                                      <form id="delete-product-{{$product->id}}"
+                                          action="{{ url('product/destroy', $product) }}"
+                                          method="POST">
+                                          @method('DELETE')
+                                          @csrf
+                                      </form>
+                                    @endcan  
+                                  </span>
+                                </td>
 
-
-                          <div class="card-body text-center">
-                            <h5 class="card-title w-100 my-2"><i class="fas fa-user-tag mr-1 text-dark"></i>{{@$product->owner->name}}</h5>
-                            <a href="#" data-toggle="tooltip" data-title="{{$product->created_at->toDayDateTimeString()}}" class="mr-3">
-                              <i class="fas fa-clock text-info"></i>
-                            </a>
-                            <a href="#" data-toggle="tooltip" data-title="{{$product->updated_at->toDayDateTimeString()}}" class="mr-3">
-                              <i class="fas fa-history text-primary"></i>
-                            </a>
-                            <span>
-                              @can('update-product', User::class)
-                              <a class="text-primary mr-3" href="{{url('/product/edit', $product)}}">
-                                <i class="fas fa-edit"></i>
-                              </a>
-                              @endcan
-
-                              @can('delete-product', User::class)
-
-                              <span id="delbtn{{@$product->id}}"></span>
-
-                              <form id="delete-product-{{$product->id}}" action="{{ url('product/destroy', $product) }}" method="POST">
-                                @method('DELETE')
-                                @csrf
-                              </form>
-                              @endcan
-                            </span>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                    @endforeach
-                  </tbody>
+                            </tr>
+                        @endforeach
+                    </tbody>
 
                 </table>
+              </div>
+             
               </div>
 
 

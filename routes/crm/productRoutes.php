@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductGroupController;
+use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\SubCategoriesController;
 Route::group(['prefix'=>'/product','middleware'=>['auth']], function(){
 
     // SECTION Product Group Routes
@@ -11,6 +13,20 @@ Route::group(['prefix'=>'/product','middleware'=>['auth']], function(){
     Route::put('/productgroup/{productGroup}', [ProductGroupController::class, 'update']);
     Route::delete('/productgroup/destroy/{productGroup}', [ProductGroupController::class, 'destroy']);
     // !SECTION Product Group Routes
+    
+    // SECTION Product Categories Routes
+    Route::get('/categories', [CategoriesController::class, 'index']);
+    Route::post('/categories/store', [CategoriesController::class, 'store']);
+    Route::put('/categories/{category}', [CategoriesController::class, 'update']);
+    Route::delete('/categories/destroy/{category}', [CategoriesController::class, 'destroy']);
+    // !SECTION Categories Group Routes
+    
+    // SECTION Product Subcategories Routes
+    Route::get('/subcategories', [SubCategoriesController::class, 'index']);
+    Route::post('/subcategories/store', [SubCategoriesController::class, 'store']);
+    Route::put('/subcategories/{subcategory}', [SubCategoriesController::class, 'update']);
+    Route::delete('/subcategories/destroy/{subcategory}', [SubCategoriesController::class, 'destroy']);
+    // !SECTION Product Subcategories Routes
 
     // SECTION Product Routes
     Route::get('/', [ProductController::class, 'index'])->middleware(['can:view-product']);

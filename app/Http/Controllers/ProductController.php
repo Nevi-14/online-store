@@ -155,9 +155,9 @@ class ProductController extends Controller
 
             if ($request->hasFile('image')) {
                 foreach ($request->image as $file) {
-
+                
                     $image_name = $request->name . '.' . time() . '.' . $file->getClientOriginalExtension();
-                    $path = $file->storeAs('images/products', $image_name);
+                    $path = $file->storeAs('images/products', $image_name, 'public');
 
 
 

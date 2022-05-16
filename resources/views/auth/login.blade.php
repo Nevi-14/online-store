@@ -1,12 +1,12 @@
-@extends('layouts.store')
+@extends('layouts.login')
 
 
 
 @section('content')
 
-<section id="services" style="height:100vh;display:flex;align-items:center;">
+<section id="services"  >
 <div class="container">
-    <div class="row">
+    <div class="row" style="margin-top: 4rem;">
 
       
 <div class="col-12 col-md-4 mx-auto">

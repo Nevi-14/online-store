@@ -13,9 +13,6 @@
             $(`#delbtn${id}`).append(btn);
         }
 
-        $('.role_id').select2({
-        width:"100%"
-        });
 
         $('#staff_users').DataTable( {
             "order": [[ 0, "desc" ]],

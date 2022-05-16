@@ -5,11 +5,11 @@
       <div class="row ">
         <div class="col-12 col-lg-3 d-flex  align-items-center  text-white">
           <h2 class=" my-2 mx-auto " href="#">
-          <img class="d-inline-block align-top" src= "/show_company_images/?file={{$logo}}" alt="logo" height="50" width="50">
+          <img class="d-inline-block align-top"     src="{{asset('storage/adminfiles/companies/' . $logo)}}" alt="logo" height="50" width="50">
           <!-- <img src="{{ asset('image/nobgfinal.png') }}" width="50" height="50" class="d-inline-block align-top" alt="">-->
             <span class="ml-2 ">{{$company_name}}</span>
           </h2>
-         
+      
        
         </div>
 

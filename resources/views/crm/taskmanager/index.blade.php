@@ -16,7 +16,9 @@
 
 @section('content')
 
+
 <div class="content-wrapper">
+	
 
 		<!-- Main content -->
 
@@ -64,14 +66,14 @@
 
 													<div class="form-group">
 
+													
+
 															<label for=""><span class="text-danger">*</span> {{__('Request User ?')}} </label>
 
-															<select name="requester_id"  class="relation form-control form-control-sm" required>
+															<select name="requester_id"  class=" form-control form-control-sm" required>
 
                                                             @foreach ($salesperson as $user)
-
-                                                            
-
+															
                                                             <option value="{{$user->id}}">{{$user->name}}</option>
 
                                                             @endforeach

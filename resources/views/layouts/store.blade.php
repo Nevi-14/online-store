@@ -5,6 +5,7 @@
 @endif
 
 
+
 @yield('content')
 @include('partials.filter')
 @include('partials.footer_new')

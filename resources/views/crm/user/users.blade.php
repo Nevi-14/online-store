@@ -176,8 +176,8 @@
 {{-- All Modal Starts Here --}}
 <div class="modal fade" id="adduser" tabindex="-1" user="dialog" aria-labelledby="adduserLabel" aria-hidden="true">
     <div class="modal-dialog" user="document">
-      <div class="modal-content bg-light-gray">
-        <div class="modal-header bg-gray">
+      <div class="modal-content ">
+        <div class="modal-header">
           <h5 class="modal-title" id="adduserLabel">{{__('Add User')}}</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -187,13 +187,13 @@
             <div class="modal-body">
                 @csrf
                 <div class="row">
-                  <div class="col-md-6 col-md-12">
+                  <div class="col-12 col-md-6">
                     <div class="form-group">
                       <label for="">{{__('Name')}}</label>
                       <input type="text" name="name" class="form-control" data-validation="length" data-validation-length="min2" required/>
                     </div>
                   </div>
-                  <div class="col-md-6 col-md-12">
+                  <div class="col-12 col-md-6">
                     <div class="form-group">
                       <label for="">{{__('Email')}}</label>
                       <input type="email" name="email" class="form-control" data-validation="email" required/>
@@ -201,13 +201,13 @@
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-md-4 col-md-12">
+                <div class="col-12 col-md-6">
                     <div class="form-group">
                       <label for="">{{__('Phone')}}</label>
                       <input type="number" name="phone" class="form-control" />
                     </div>
                   </div>
-                  <div class="col-md-4 col-md-12">
+                  <div class="col-12 col-md-6">
                     <div class="form-group">
                       <label for="">{{__('Role')}}</label>
                       <select name="role_id" class="role_id form-control">

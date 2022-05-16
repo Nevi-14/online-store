@@ -122,19 +122,7 @@
                         </a>
 
                         <ul class="nav nav-treeview">
-                            @can('create-product', Auth::user())
-                            @if($route_active == 'productCreate')
-                            @php
-                            $productCreate = 'active';
-                            @endphp
-                            @endif
-                            <li class="nav-item">
-                                <a href="{{url('product/create')}}" class="nav-link {{@$productCreate}}">
-                                    <i class="far fa-folder nav-icon text-secondary"></i>
-                                    <p>{{ Str::upper(__('new product')) }}</p>
-                                </a>
-                            </li>
-                            @endcan
+                  
 
                             @can('view-product', Auth::user())
                             @if($route_active == 'product')
@@ -157,9 +145,16 @@
                             @endphp
                             @endif
                             <li class="nav-item">
-                                <a href="{{url('/product/productgroup')}}" class="nav-link {{@$productgroup}}">
+                                <a href="{{url('/product/categories')}}" class="nav-link {{@$productgroup}}">
                                     <i class="far fa-folder nav-icon text-secondary"></i>
-                                    <p>{{ Str::upper(__('groups')) }}</p>
+                                    <p>{{ Str::upper(__('Categories')) }}</p>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="{{url('/product/subcategories')}}" class="nav-link {{@$productgroup}}">
+                                    <i class="far fa-folder nav-icon text-secondary"></i>
+                                    <p>{{ Str::upper(__('Subcategories')) }}</p>
                                 </a>
                             </li>
 
@@ -440,46 +435,6 @@
                         </a>
                     </li>
                   @endcan
-
-                    @can('viewany-lead', User::class)
-                        @if(@$route_active == 'media')
-                            @php
-                            $media_dd = 'active';
-                            $media_menu_open = 'menu-open';
-                            @endphp
-                        @else
-                            @php
-                            $media_menu_open = 'menu-close';
-                            @endphp
-                        @endif
-                        <li class="nav-item has-treeview {{ @$media_menu_open }}">
-                            <a href="{{url('media/')}}"  class="nav-link {{@$media_dd}}">
-                                <i class="nav-icon fas fa-folder-open"></i>
-                                <p>
-                                    {{ Str::upper(__('media files')) }}
-                                </p>
-                            </a>
-                        </li>
-                    @endcan
-
-                    @can('viewany-lead', User::class)
-                        @if(@$route_active == 'reminder')
-                            @php
-                            $reminder_dd = 'active';
-                            $reminder_menu_open = 'menu-open';
-                            @endphp
-                        @else
-                            @php
-                            $reminder_menu_open = 'menu-close';
-                            @endphp
-                        @endif
-                        <li class="nav-item has-treeview {{ @$reminder_menu_open }}">
-                            <a href="{{url('reminder/')}}"  class="nav-link {{@$reminder_dd}}">
-                                <i class="nav-icon fas fa-business-time"></i>
-                                <p>{{ Str::upper(__('reminders')) }}</p>
-                            </a>
-                        </li>
-                    @endcan
 
 
                 @can('viewany-office', User::class)

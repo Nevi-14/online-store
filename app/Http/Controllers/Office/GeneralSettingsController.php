@@ -302,9 +302,9 @@ class GeneralSettingsController extends Controller
            $name = time() . '.' . $request->logo_file->getClientOriginalExtension();
         //   $name = $name.$extension;
            $destination_path = 'adminfiles/companies';
-           $path = $request->logo_file->storeAs($destination_path,$name);
+           $path = $request->logo_file->storeAs($destination_path,$name, 'public');
 
-           dd($path);
+          // dd($path);
          }
          if($extension == '.png' || $extension == '.jpg' || $extension == '.jpeg' || $extension == '.gif' || $extension == '.PNG' || $extension == '.JPG' || $extension == '.JPEG' || $extension == '.GIF') {
              $extension = 'image';

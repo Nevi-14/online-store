@@ -281,7 +281,10 @@
               @foreach($productDetail->images as $img)
               @if($img->default == 1)
               <div class="carousel-item active">
-                  <img src="/show_images/?file={{$img->image}}" class="d-block w-100" alt="..." height="200">
+              <img  src= "/show_images/?file={{$product->product_details->first()->images->first()->image}}" alt="Card image cap" height="200" >
+     
+              
+      
                   <div class="carousel-caption  d-md-block">
       
                   <form action="#" method="POST">

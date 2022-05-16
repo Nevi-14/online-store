@@ -183,8 +183,8 @@
 
 <div class="modal fade" id="addRole" tabindex="-1" role="dialog" aria-labelledby="addRoleLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-      <div class="modal-content bg-light-gray">
-        <div class="modal-header bg-gray">
+      <div class="modal-content ">
+        <div class="modal-header ">
           <h5 class="modal-title" id="addRoleLabel">{{__('Add Role')}}</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>

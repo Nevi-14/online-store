@@ -2,7 +2,7 @@
 
     <div class="col-6 mb-3">
         <label for="name">Nombre del producto <i class="fas fa-question-circle" data-toggle="tooltip" data-placement="top" title="Nombre del producto"></i></label>
-        <input type="text" class="form-control form-control-sm" name="name" placeholder="Nombre del producto" required autocomplete="off">
+        <input type="text" class="form-control form-control-sm" name="name" placeholder="Nombre del producto"  autocomplete="off">
 
         <div class="invalid-feedback">
             Enter a valid name
@@ -15,7 +15,7 @@
 
         <label for="staff">Asociado</label>
 
-        <select id="product_owner" class="form-control form-control-sm " data-toggle="modal" data-target="#" name="product_owner" inputmode="search" required>
+        <select id="product_owner" class="form-control form-control-sm " data-toggle="modal" data-target="#" name="product_owner" inputmode="search" >
 
             @foreach ($users as $user)
             <option value="{{@$user->id}}">{{@$user->name}}</option>
@@ -32,7 +32,7 @@
 
         <label for="offer">Categoria</label>
 
-        <select class="form-control form-control-sm " name="category_id" required data-toggle="modal" data-target="#">
+        <select class="form-control form-control-sm " name="category_id"  data-toggle="modal" data-target="#">
             @foreach ($categories as $category)
             <option value="{{@$category->id}}">{{@$category->name}}</option>
             @endforeach
@@ -49,7 +49,7 @@
     <div class="col-6 mb-3">
 
         <label for="offer">Subcategoria</label>
-        <select id="subcategories" class="form-control form-control-sm " name="subcategory_id" inputmode="none" data-toggle="modal" data-target="#" required>on>
+        <select id="subcategories" class="form-control form-control-sm " name="subcategory_id" inputmode="none" data-toggle="modal" data-target="#" >on>
             @foreach ($subcategories as $subcategory)
             <option value="{{@$subcategory->id}}">{{@$subcategory->name}}</option>
             @endforeach
@@ -79,7 +79,7 @@
     <div class="col-6 mb-3">
         <label for="size">Tamaño</label>
 
-        <select id="size" class="form-control form-control-sm " inputmode="none" name="size_id" required data-toggle="modal" data-target="#">
+        <select id="size" class="form-control form-control-sm " inputmode="none" name="size_id"  data-toggle="modal" data-target="#">
             >
             @foreach($sizes as $size)
             <option value=" {{$size->id}}"> {{$size->name}}</option>
@@ -98,7 +98,7 @@
 
     <div class="col-6 mb-3">
         <label for="stock">U. Inventario</label>
-        <input type="number" class="form-control form-control-sm" name="stock" value="0" required autocomplete="off">
+        <input type="number" class="form-control form-control-sm" name="stock" value="0"  autocomplete="off">
         <div class="valid-feedback">
             Stock cannot be empty.
         </div>
@@ -107,7 +107,7 @@
     </div>
     <div class="col-6 mb-3">
         <label for="stock">U. Disponibles</label>
-        <input type="number" class="form-control form-control-sm" name="available" value="0" required autocomplete="off">
+        <input type="number" class="form-control form-control-sm" name="available" value="0"  autocomplete="off">
         <div class="valid-feedback">
             Stock cannot be empty.
         </div>
@@ -118,7 +118,7 @@
 
     <div class="col-12 mb-3">
         <label for="description">Descripcion larga</label>
-        <textarea class="form-control" name="long_description" rows="4" autocomplete="off" placeholder="Descripción" required></textarea>
+        <textarea class="form-control" name="long_description" rows="4" autocomplete="off" placeholder="Descripción" ></textarea>
         <div class="valid-feedback">
             Description cannot be empty.
 

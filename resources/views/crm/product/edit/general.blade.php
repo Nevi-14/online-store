@@ -25,7 +25,7 @@
     <div class="col-6 mb-3">
         <label for="size">Tamaño</label>
 
-        <select class="form-control form-control-sm select2" name="size_id" required>
+        <select class="form-control form-control-sm select2" name="size_id" >
 
             <option disabled selected></option>
             @foreach($sizes as $size)
@@ -56,7 +56,7 @@
 
     <div class="col-6 mb-3">
         <label for="stock">Unidades en inventario</label>
-        <input type="number" class="form-control form-control-sm" name="stock" value="{{$productDetail->stock}}" required autocomplete="off">
+        <input type="number" class="form-control form-control-sm" name="stock" value="{{$productDetail->stock}}"  autocomplete="off">
         <div class="valid-feedback">
             Stock cannot be empty.
         </div>
@@ -65,7 +65,7 @@
     </div>
     <div class="col-6 mb-3">
         <label for="stock">Unidades disponibles</label>
-        <input type="number" class="form-control form-control-sm" name="available" value="{{$productDetail->available}}" required autocomplete="off">
+        <input type="number" class="form-control form-control-sm" name="available" value="{{$productDetail->available}}"  autocomplete="off">
         <div class="valid-feedback">
             Stock cannot be empty.
         </div>

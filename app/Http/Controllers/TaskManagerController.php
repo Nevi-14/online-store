@@ -28,7 +28,7 @@ class TaskManagerController extends Controller
         $salesperson = User::where('status','active')->get();
         $user = Auth::user();
         $tasks = TaskManager::orderby('id','desc')->get();
-   
+  // dd($salesperson);
       
         // This start_date_js array is to prevent inline js and to remove onclick from the blade file.
         $start_date_js = [];

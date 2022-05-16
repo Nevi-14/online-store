@@ -153,14 +153,14 @@ class ProductDetailController extends Controller
     {
         $request->validate([
             'product_id' => 'required',
-            'discount_id' => 'required',
-            'size_id' => 'required',
-            'status_id' => 'required',
-            'purchased_price' => 'required',
-            'suggested_price' => 'required',
-            'selling_price' => 'required',
-            'stock' => 'required',
-            'available' => 'required',
+            'discount_id' => '',
+            'size_id' => '',
+            'status_id' => '',
+            'purchased_price' => '',
+            'suggested_price' => '',
+            'selling_price' => '',
+            'stock' => '',
+            'available' => '',
             'change_size'=>''
     ]);
    
@@ -205,7 +205,7 @@ if ($request->hasFile('image')) {
     foreach ($request->image as $file) {
 
         $image_name = $request->name . '.' . time() . '.' . $file->getClientOriginalExtension();
-        $path = $file->storeAs('images/products', $image_name);
+        $path = $file->storeAs('images/products', $image_name, 'public');
 
 
 
