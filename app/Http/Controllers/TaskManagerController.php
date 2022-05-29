@@ -196,9 +196,10 @@ class TaskManagerController extends Controller
      * @param  \App\TaskManager  $taskManager
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TaskManager $manager)
+    public function destroy(TaskManager $task)
     {
-        if ($manager->delete()) {
+       // dd($task);
+        if ($task->delete()) {
             $notification = array(
                 'message' => 'Task deleted successfully!',
                 'alert-type' => 'success'

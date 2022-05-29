@@ -30,6 +30,7 @@
                     <thead>
                     <tr>
                       <th>{{__('ID')}}</th>
+                      <th>{{__('Category')}}</th>
                       <th>{{__('Subcategory Name')}}</th>
                       <th>{{__('Actions')}}</th>
                     </tr>
@@ -37,7 +38,9 @@
                     <tbody>
                         @foreach (@$subcategory as $productGroup)
                             <tr>
+                    
                               <td>{{@$productGroup->id}}</td>
+                              <td>{{@$productGroup->category->name}}</td>
                               <td>{{@$productGroup->name}}</td>
             
                                 <td>
@@ -66,6 +69,29 @@
                                     <form action="{{url('product/subcategories', $productGroup)}}" method="POST">
                                         @csrf
                                         @method('PUT')
+
+                              
+    <div class="form-group">
+
+<label for="staff">Categoria</label>
+<select class="form-control form-control-sm" name="category_id">
+
+    <option disabled selected value></option>
+    @foreach ($categories as $category)
+
+    @if(@$productGroup->category->id == $category->id)
+    <option value="{{@$category->id}}" selected>{{@$category->name}}</option>
+    @else
+    <option value="{{@$category->id}}">{{@$category->name}}</option>
+    @endif
+
+    @endforeach
+
+</select>
+<div class="invalid-feedback">
+    Please select a valid staff.
+</div>
+</div>
                                         <div class="form-group">
                                           <label for="">{{__('Product Subcategory')}}</label>
                                           <input type="text" name="name" class="form-control" value="{{@$productGroup->name}}" data-validation="length" data-validation-length="2-50" required>
@@ -127,6 +153,25 @@
         <div class="modal-body">
           <form action="{{url('product/subcategories/store')}}" method="POST">
               @csrf
+
+              <div class="form-group">
+
+<label for="staff">Categoria</label>
+<select class="form-control form-control-sm " name="category_id">
+
+    <option disabled selected value></option>
+    @foreach ($categories as $category)
+
+    <option value="{{@$category->id}}">{{@$category->name}}</option>
+    @endforeach
+
+</select>
+<div class="invalid-feedback">
+    Please select a valid staff.
+</div>
+</div>
+                                        <div class="form-group">
+      
               <div class="form-group">
                 <label for="">{{__('Product Subcategory')}}</label>
                 <input type="text" name="name" class="form-control" data-validation="length" data-validation-length="2-50" required>

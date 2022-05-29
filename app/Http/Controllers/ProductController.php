@@ -244,6 +244,19 @@ class ProductController extends Controller
         }
     }
 
+    public function getProduct(Request $request){
+
+        $products = Product::orderby('id','desc')->with('product_details','category','subcategory','product_details.images')->get();
+
+        
+
+        return response()->json([
+            'products'=>$products,
+        ]);
+    }
+
+
+    
     public function destroy(Product $product)
     {
         if ($product->delete()) {

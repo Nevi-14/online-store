@@ -269,7 +269,7 @@ class InvoiceController extends Controller
         $taxrates = TaxRate::get();
         $currencies = Currency::get();
         $salesperson = User::where('role_id','!=','1')->where('role_id','3')->where('status','active')->get();
-        $products = Product::where('status','active')->get();
+        $products = Product::get();
         return view('crm.invoice.edit', compact(['route_active', 'taxrates','currencies','salesperson','products','invoice']));
     }
 

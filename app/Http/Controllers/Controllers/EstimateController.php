@@ -12,6 +12,8 @@ use Illuminate\Http\Request;
 use App\Models\SingleRowData;
 use App\Models\EstimateProduct;
 use App\Models\Customer\Customer;
+use App\Models\status;
+
 use Illuminate\Support\Facades\Auth;
 use App\Jobs\Invoices\ClientEmailJob;
 use App\Jobs\Estimates\ClientEmailJob as EstimatesClientEmailJob;
@@ -114,9 +116,11 @@ class EstimateController extends Controller
         $route_active = 'estimateCreate';
         $taxrates = TaxRate::get();
         $currencies = Currency::get();
+        $statusess = status::get();
+
         $salesperson = User::where('role_id','!=','1')->where('role_id','3')->where('status','active')->get();
-        $products = Product::where('status','active')->get();
-        return view('crm.estimate.create', compact(['route_active', 'taxrates','currencies','salesperson','products','relation','id']));  
+        $products = Product::get();
+        return view('crm.estimate.create', compact(['route_active', 'taxrates','currencies','salesperson','statusess','products','relation','id']));  
     }
 
     public function store(Request $request)
@@ -182,7 +186,7 @@ class EstimateController extends Controller
         $taxrates = TaxRate::get();
         $currencies = Currency::get();
         $salesperson = User::where('role_id','!=','1')->where('role_id','3')->where('status','active')->get();
-        $products = Product::where('status','active')->get();
+        $products = Product::get();
         return view('crm.estimate.edit', compact(['route_active', 'taxrates','currencies','salesperson','products','estimate']));
     }
 

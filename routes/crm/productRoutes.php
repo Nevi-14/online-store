@@ -44,4 +44,10 @@ Route::group(['prefix'=>'/product','middleware'=>['auth']], function(){
 
 
 });
+
+Route::group(['prefix'=>'api'], function(){
+    // NOTE API lead TITLE ROUTES
+    Route::get('products', [ProductController::class, 'getProduct']);
+    
+});
 ?>

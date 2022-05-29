@@ -192,6 +192,8 @@ class InvoiceController extends Controller
                 'message' => 'Please refresh the page and try again!',
                 'alert-type' => 'error'
             );
+
+            
             return back()->with($notification);  
         }
     }
@@ -202,7 +204,7 @@ class InvoiceController extends Controller
         $taxrates = TaxRate::get();
         $currencies = Currency::get();
         $salesperson = User::where('role_id','!=','1')->where('role_id','3')->where('status','active')->get();
-        $products = Product::where('status','active')->get();
+        $products = Product::get();
         $terms  = SingleRowData::where(['field_name'=>'terms'])->first();
         return view('crm.invoice.create', compact(['route_active', 'taxrates','currencies','salesperson','products','relation','id','terms']));  
     }
@@ -270,7 +272,7 @@ class InvoiceController extends Controller
         $taxrates = TaxRate::get();
         $currencies = Currency::get();
         $salesperson = User::where('role_id','!=','1')->where('role_id','3')->where('status','active')->get();
-        $products = Product::where('status','active')->get();
+        $products = Product::get();
         return view('crm.invoice.edit', compact(['route_active', 'taxrates','currencies','salesperson','products','invoice']));
     }
 

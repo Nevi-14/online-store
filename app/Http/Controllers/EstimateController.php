@@ -114,7 +114,7 @@ class EstimateController extends Controller
         $taxrates = TaxRate::get();
         $currencies = Currency::get();
         $salesperson = User::where('role_id','!=','1')->where('role_id','3')->where('status','active')->get();
-        $products = Product::where('status','active')->get();
+        $products = Product::get();
         return view('crm.estimate.create', compact(['route_active', 'taxrates','currencies','salesperson','products','relation','id']));  
     }
 
@@ -181,7 +181,7 @@ class EstimateController extends Controller
         $taxrates = TaxRate::get();
         $currencies = Currency::get();
         $salesperson = User::where('role_id','!=','1')->where('role_id','3')->where('status','active')->get();
-        $products = Product::where('status','active')->get();
+        $products = Product::get();
         return view('crm.estimate.edit', compact(['route_active', 'taxrates','currencies','salesperson','products','estimate']));
     }
 

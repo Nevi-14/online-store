@@ -23,6 +23,7 @@ class ProductController extends Controller
         return view('crm.product.index', compact(['route_active', 'products','productGroups','base_currency','product_ids']));        
     }
 
+
     /**
      *  GET - /product/import
      *  
@@ -33,6 +34,9 @@ class ProductController extends Controller
         $route_active = 'product';
         return view('crm.product.products_import', compact(['route_active']));
     }
+
+
+    
 
     /**
      *  POST - /product/import

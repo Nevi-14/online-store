@@ -92,7 +92,7 @@
                       <div class="col-md-4 col-sm-12">
                           <span ><span class="text-danger"></span> {{__('Customer Type')}}</span>
                           <div class="form-group">
-                              <select name="customer_type" id="type" class="form-control form-control-sm " >
+                              <select name="customer_type"  class="form-control form-control-sm " >
                                   <option selected disabled>{{__('Select an option')}}</option>
                                   @foreach (config('constants.CONTACT_TYPES') as $item)
                                       <option defaultValue="{{$item}}">{{$item}}</option>
@@ -105,7 +105,7 @@
                       <div class="col-md-4 col-sm-12">
                           <span ><span class="text-danger"></span> {{__('Prospect Type')}}</span>
                           <div class="form-group">
-                              <select name="prospect_status" id="prospect_status" class="form-control form-control-sm">
+                              <select name="prospect_status"  class="form-control form-control-sm">
                                   <option selected disabled>{{__('Select an option')}}</option>
                                   @foreach (config('constants.PROSPECTS') as $item)
                                       <option defaultValue="{{$item}}">{{$item}}</option>

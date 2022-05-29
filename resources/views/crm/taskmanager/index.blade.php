@@ -894,7 +894,7 @@
 
 																					<form id="delete-task-{{$task->id}}"
 
-																							action="{{ url('task/manager', $task) }}"
+																							action="{{ url('task/manager/destroy', $task) }}"
 
 																							method="POST">
 
