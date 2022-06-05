@@ -8,17 +8,16 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Cookie;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Office\GeneralSettingsController;
+
 use App\Http\Controllers\ProductDetailController;
 use App\Http\Controllers\ProductImageController;
 use App\Http\Controllers\TaskManagerController;
+;
 
-use App\Http\Controllers\FileUploadController;
-
-use Illuminate\Support\Facades\Artisan;
 Route::get('/', function () {
 
  
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::get('/refresh', function(){
@@ -75,6 +74,8 @@ Route::group(['middleware'=>['auth']], function(){
     Route::post('/product/details', [ProductDetailController::class, 'store'])->name('product.details.store')->middleware(['can:create-task']);
     Route::put('/product/details/edit/{productDetail}', [ProductDetailController::class, 'update'])->name('product.details.update')->middleware(['can:create-task']);
     Route::delete('/product/details/destroy/{productDetail}', [ProductDetailController::class, 'destroy'])->name('product.details.destroy')->middleware(['can:create-task']);
+
+
 
 
 

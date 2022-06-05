@@ -4,15 +4,16 @@
 
 @section('content')
 
-<section id="services"  >
-<div class="container">
-    <div class="row" style="margin-top: 4rem;">
 
-      
+<div class="container" style="height: 100vh;">
+    <div class="row" style="height: 100%;display:flex;justify-content:Center;align-items:center;">
+
+ 
 <div class="col-12 col-md-4 mx-auto">
+
 <div class="card shadow-lg card-login" >
 
-<div class="card-header bg-transparent border-0 text-center text-info"><i class="fas fa-user fa-3x mb-2 user-icon "> </i><p>USER LOGIN</p></div>
+<div class="card-header bg-transparent border-0 text-center text-info"><i class="fas fa-user fa-3x mb-2 user-icon "> </i><p style="font-weight:bold;text-transform:uppercase">Carnivorous Magic</p></div>
 
 
 
@@ -126,7 +127,7 @@
 </div>
     </div>
   </div>
-</section>
+
 
 
 

@@ -66,7 +66,3 @@
   
 
 
-@include('partials.navbarplugin')
-
-
-

@@ -54,7 +54,8 @@ Route::get('/', function () {
 
 
 
-    return view('welcome');
+
+return view('auth.login');
 
 });
 
@@ -89,6 +90,8 @@ Auth::routes([
 ]);
 
 
+
+Route::resource("task/manager","TaskManagerController")->middleware('auth');
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
